@@ -549,9 +549,268 @@
     padding: 6px 10px;
     border-left: 3px solid #1a3a5c;
   }
+
+  /* ── SPLASH SCREEN ────────────────────────────────────────────────────── */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 99997;
+    background: var(--darker);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  #splash.exit {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+  }
+
+  /* Animated ice-rink grid background */
+  #splash::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(0,234,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,234,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridDrift 20s linear infinite;
+  }
+
+  @keyframes gridDrift {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 0 40px, 40px 0; }
+  }
+
+  /* Vignette */
+  #splash::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, #000000ee 100%);
+    pointer-events: none;
+  }
+
+  .splash-logo {
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(28px, 7vw, 72px);
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px #00eaff, 0 0 60px #00eaff55, 0 0 100px #00eaff22;
+    letter-spacing: 6px;
+    animation: logoBreath 3s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 6px;
+  }
+
+  .splash-logo span {
+    color: var(--neon-red);
+    text-shadow: 0 0 20px #ff2d55, 0 0 60px #ff2d5555;
+  }
+
+  @keyframes logoBreath {
+    0%, 100% { text-shadow: 0 0 20px #00eaff, 0 0 60px #00eaff55; }
+    50%       { text-shadow: 0 0 30px #00eaff, 0 0 80px #00eaff88, 0 0 120px #00eaff33; }
+  }
+
+  .splash-season {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #4a7a99;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 60px;
+  }
+
+  /* ── Coin slot machine ── */
+  .coin-machine {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .slot-housing {
+    width: 80px;
+    height: 28px;
+    border: 3px solid var(--neon-gold);
+    border-radius: 4px;
+    box-shadow: 0 0 12px #ffd70066, inset 0 0 8px #ffd70022;
+    position: relative;
+    background: #0a0800;
+    overflow: visible;
+  }
+
+  .slot-opening {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 5px;
+    background: #000;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+    border: 1px solid #3a2a00;
+  }
+
+  /* The coin that drops in */
+  .coin {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ffe066, #ffd700 40%, #b8960c 80%, #8a6e09);
+    border: 2px solid #c9a800;
+    box-shadow: 0 0 10px #ffd70088, inset 0 1px 3px rgba(255,255,200,0.5);
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 2;
+  }
+
+  .coin::after {
+    content: '$';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 8px;
+    color: #8a6e09;
+    line-height: 1;
+  }
+
+  /* Idle float animation */
+  .coin.idle {
+    opacity: 1;
+    animation: coinFloat 2s ease-in-out infinite;
+  }
+
+  @keyframes coinFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0);    }
+    50%       { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  /* Drop animation — triggered by JS adding .dropping */
+  .coin.dropping {
+    animation: coinDrop 0.45s cubic-bezier(0.4, 0, 1, 1) forwards !important;
+  }
+
+  @keyframes coinDrop {
+    0%   { opacity: 1; top: -48px; }
+    70%  { opacity: 1; top: 8px;   }
+    85%  { opacity: 1; top: 2px;   }
+    100% { opacity: 0; top: 12px;  }
+  }
+
+  /* Flash when coin lands */
+  .slot-housing.flash {
+    animation: slotFlash 0.3s ease forwards;
+  }
+
+  @keyframes slotFlash {
+    0%   { box-shadow: 0 0 12px #ffd70066, inset 0 0 8px #ffd70022; }
+    40%  { box-shadow: 0 0 40px #ffd700cc, inset 0 0 20px #ffd70055; border-color: #fff; }
+    100% { box-shadow: 0 0 12px #ffd70066, inset 0 0 8px #ffd70022; }
+  }
+
+  .insert-coin-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 9px;
+    color: var(--neon-gold);
+    letter-spacing: 3px;
+    text-shadow: 0 0 8px #ffd70088;
+    animation: blink 1.1s step-end infinite;
+    margin-top: 4px;
+  }
+
+  .splash-hint {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #2a4a66;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Demo score ticker on splash */
+  .splash-ticker {
+    position: absolute;
+    bottom: 24px;
+    left: 0; right: 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: #1a3a5c;
+    text-align: center;
+    letter-spacing: 2px;
+    z-index: 1;
+    animation: splashTickerFade 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes splashTickerFade {
+    from { color: #1a3a5c; }
+    to   { color: #2a5a8c; }
+  }
+
+  /* Attract mode: side scanlines */
+  .splash-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.12) 0px,
+      rgba(0,0,0,0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Main app hidden until splash exits */
+  #app { display: none; }
+  #app.visible { display: block; }
+
 </style>
 </head>
 <body>
+
+<!-- ── SPLASH SCREEN ─────────────────────────────────────────── -->
+<div id="splash" onclick="insertCoin()">
+  <div class="splash-scanlines"></div>
+
+  <div class="splash-logo">NHL <span>ARCADE</span></div>
+  <div class="splash-season">2024 &ndash; 25 SEASON</div>
+
+  <div class="coin-machine">
+    <div class="slot-housing" id="slotHousing">
+      <div class="coin idle" id="coin"></div>
+      <div class="slot-opening"></div>
+    </div>
+    <div class="insert-coin-label">INSERT COIN</div>
+    <div class="splash-hint">CLICK ANYWHERE TO PLAY</div>
+  </div>
+
+  <div class="splash-ticker" id="splashTicker">LOADING SCORES…</div>
+</div>
+
+<!-- ── MAIN APP ───────────────────────────────────────────────── -->
+<div id="app">
 
 <div class="header">
   <h1>NHL <span>ARCADE</span></h1>
@@ -883,6 +1142,9 @@ async function initApp() {
 
     if (payload.fetched_at) updateLastFetched(payload.fetched_at);
 
+    // Update splash ticker if it's still visible
+    if (window._updateSplashTicker) window._updateSplashTicker(GAMES.games);
+
     buildTicker();
     buildScores();
     buildStandings();
@@ -897,5 +1159,74 @@ async function initApp() {
 initApp();
 setInterval(initApp, 5 * 60 * 1000);
 </script>
+
+<script>
+// ── SPLASH LOGIC ─────────────────────────────────────────────────────────────
+
+const splash     = document.getElementById('splash');
+const app        = document.getElementById('app');
+const coin       = document.getElementById('coin');
+const slotHousing = document.getElementById('slotHousing');
+const splashTicker = document.getElementById('splashTicker');
+
+// Update splash ticker with live scores once data loads
+function updateSplashTicker() {
+  if (!window._splashTickerData) return;
+  const games = window._splashTickerData;
+  const finished = games.filter(g => g.status === 'closed' || g.status === 'inprogress');
+  if (!finished.length) return;
+  const parts = finished.slice(0, 6).map(g => {
+    const tag = g.status === 'inprogress' ? '◉' : '●';
+    const hs = g.score ? g.score[g.home] : '-';
+    const as = g.score ? g.score[g.away] : '-';
+    return `${tag} ${g.away} ${as}  ${g.home} ${hs}`;
+  });
+  splashTicker.textContent = parts.join('   •   ');
+}
+
+// Register ticker updater — called from initApp when data arrives
+window._updateSplashTicker = function(games) {
+  const finished = games.filter(g => g.status === 'closed' || g.status === 'inprogress');
+  if (!finished.length) { splashTicker.textContent = 'NO SCORES YET TODAY'; return; }
+  const parts = finished.slice(0, 6).map(g => {
+    const tag = g.status === 'inprogress' ? '◉' : '●';
+    const hs = g.score ? g.score[g.home] : '-';
+    const as = g.score ? g.score[g.away] : '-';
+    return `${tag} ${g.away} ${as}  ${g.home} ${hs}`;
+  });
+  splashTicker.textContent = parts.join('   •   ');
+};
+
+function insertCoin() {
+  // Prevent double-firing
+  if (coin.classList.contains('dropping')) return;
+
+  // Swap idle float → drop
+  coin.classList.remove('idle');
+  coin.classList.add('dropping');
+
+  // Flash the slot housing when coin "lands" (~300ms in)
+  setTimeout(() => {
+    slotHousing.classList.add('flash');
+  }, 300);
+
+  // After drop completes, flash screen white then slide to app
+  setTimeout(() => {
+    splash.classList.add('exit');
+    app.classList.add('visible');
+  }, 520);
+
+  // Fully remove splash from DOM after transition
+  setTimeout(() => {
+    splash.style.display = 'none';
+  }, 1150);
+}
+
+// Keyboard support — any key also inserts coin
+document.addEventListener('keydown', (e) => {
+  if (!app.classList.contains('visible')) insertCoin();
+});
+</script>
+</div><!-- /#app -->
 </body>
 </html>
