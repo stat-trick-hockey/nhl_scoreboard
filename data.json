@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-03-12T14:18:26.290131+00:00",
+  "fetched_at": "2026-03-12T14:24:36.205739+00:00",
   "games": {
     "date": "2026-03-11",
     "games": [
@@ -39,6 +39,756 @@
         "score": {
           "PHI": 4,
           "WSH": 1
+        }
+      },
+      {
+        "id": "2025021027",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "BOS",
+        "away": "SJS",
+        "teams": {
+          "BOS": {
+            "name": "Boston Bruins"
+          },
+          "SJS": {
+            "name": "San Jose Sharks"
+          }
+        }
+      },
+      {
+        "id": "2025021028",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "BUF",
+        "away": "WSH",
+        "teams": {
+          "BUF": {
+            "name": "Buffalo Sabres"
+          },
+          "WSH": {
+            "name": "Washington Capitals"
+          }
+        }
+      },
+      {
+        "id": "2025021029",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "TOR",
+        "away": "ANA",
+        "teams": {
+          "TOR": {
+            "name": "Toronto Maple Leafs"
+          },
+          "ANA": {
+            "name": "Anaheim Ducks"
+          }
+        }
+      },
+      {
+        "id": "2025021030",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "TBL",
+        "away": "DET",
+        "teams": {
+          "TBL": {
+            "name": "Tampa Bay Lightning"
+          },
+          "DET": {
+            "name": "Detroit Red Wings"
+          }
+        }
+      },
+      {
+        "id": "2025021031",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "FLA",
+        "away": "CBJ",
+        "teams": {
+          "FLA": {
+            "name": "Florida Panthers"
+          },
+          "CBJ": {
+            "name": "Columbus Blue Jackets"
+          }
+        }
+      },
+      {
+        "id": "2025021032",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "NJD",
+        "away": "CGY",
+        "teams": {
+          "NJD": {
+            "name": "New Jersey Devils"
+          },
+          "CGY": {
+            "name": "Calgary Flames"
+          }
+        }
+      },
+      {
+        "id": "2025021033",
+        "status": "scheduled",
+        "start_time": "2026-03-12T23:00:00Z",
+        "home": "CAR",
+        "away": "STL",
+        "teams": {
+          "CAR": {
+            "name": "Carolina Hurricanes"
+          },
+          "STL": {
+            "name": "St. Louis Blues"
+          }
+        }
+      },
+      {
+        "id": "2025021034",
+        "status": "scheduled",
+        "start_time": "2026-03-13T00:00:00Z",
+        "home": "DAL",
+        "away": "EDM",
+        "teams": {
+          "DAL": {
+            "name": "Dallas Stars"
+          },
+          "EDM": {
+            "name": "Edmonton Oilers"
+          }
+        }
+      },
+      {
+        "id": "2025021035",
+        "status": "scheduled",
+        "start_time": "2026-03-13T00:00:00Z",
+        "home": "MIN",
+        "away": "PHI",
+        "teams": {
+          "MIN": {
+            "name": "Minnesota Wild"
+          },
+          "PHI": {
+            "name": "Philadelphia Flyers"
+          }
+        }
+      },
+      {
+        "id": "2025021036",
+        "status": "scheduled",
+        "start_time": "2026-03-13T00:00:00Z",
+        "home": "WPG",
+        "away": "NYR",
+        "teams": {
+          "WPG": {
+            "name": "Winnipeg Jets"
+          },
+          "NYR": {
+            "name": "New York Rangers"
+          }
+        }
+      },
+      {
+        "id": "2025021037",
+        "status": "scheduled",
+        "start_time": "2026-03-13T01:00:00Z",
+        "home": "UTA",
+        "away": "CHI",
+        "teams": {
+          "UTA": {
+            "name": "Utah Mammoth"
+          },
+          "CHI": {
+            "name": "Chicago Blackhawks"
+          }
+        }
+      },
+      {
+        "id": "2025021038",
+        "status": "scheduled",
+        "start_time": "2026-03-13T02:00:00Z",
+        "home": "VAN",
+        "away": "NSH",
+        "teams": {
+          "VAN": {
+            "name": "Vancouver Canucks"
+          },
+          "NSH": {
+            "name": "Nashville Predators"
+          }
+        }
+      },
+      {
+        "id": "2025021039",
+        "status": "scheduled",
+        "start_time": "2026-03-13T02:00:00Z",
+        "home": "VGK",
+        "away": "PIT",
+        "teams": {
+          "VGK": {
+            "name": "Vegas Golden Knights"
+          },
+          "PIT": {
+            "name": "Pittsburgh Penguins"
+          }
+        }
+      },
+      {
+        "id": "2025021040",
+        "status": "scheduled",
+        "start_time": "2026-03-13T02:00:00Z",
+        "home": "SEA",
+        "away": "COL",
+        "teams": {
+          "SEA": {
+            "name": "Seattle Kraken"
+          },
+          "COL": {
+            "name": "Colorado Avalanche"
+          }
+        }
+      },
+      {
+        "id": "2025021041",
+        "status": "scheduled",
+        "start_time": "2026-03-13T23:00:00Z",
+        "home": "NYI",
+        "away": "LAK",
+        "teams": {
+          "NYI": {
+            "name": "New York Islanders"
+          },
+          "LAK": {
+            "name": "Los Angeles Kings"
+          }
+        }
+      },
+      {
+        "id": "2025021042",
+        "status": "scheduled",
+        "start_time": "2026-03-14T00:00:00Z",
+        "home": "STL",
+        "away": "EDM",
+        "teams": {
+          "STL": {
+            "name": "St. Louis Blues"
+          },
+          "EDM": {
+            "name": "Edmonton Oilers"
+          }
+        }
+      },
+      {
+        "id": "2025021043",
+        "status": "scheduled",
+        "start_time": "2026-03-14T17:00:00Z",
+        "home": "OTT",
+        "away": "ANA",
+        "teams": {
+          "OTT": {
+            "name": "Ottawa Senators"
+          },
+          "ANA": {
+            "name": "Anaheim Ducks"
+          }
+        }
+      },
+      {
+        "id": "2025021044",
+        "status": "scheduled",
+        "start_time": "2026-03-14T19:00:00Z",
+        "home": "WSH",
+        "away": "BOS",
+        "teams": {
+          "WSH": {
+            "name": "Washington Capitals"
+          },
+          "BOS": {
+            "name": "Boston Bruins"
+          }
+        }
+      },
+      {
+        "id": "2025021045",
+        "status": "scheduled",
+        "start_time": "2026-03-14T20:00:00Z",
+        "home": "WPG",
+        "away": "COL",
+        "teams": {
+          "WPG": {
+            "name": "Winnipeg Jets"
+          },
+          "COL": {
+            "name": "Colorado Avalanche"
+          }
+        }
+      },
+      {
+        "id": "2025021046",
+        "status": "scheduled",
+        "start_time": "2026-03-14T22:00:00Z",
+        "home": "MIN",
+        "away": "NYR",
+        "teams": {
+          "MIN": {
+            "name": "Minnesota Wild"
+          },
+          "NYR": {
+            "name": "New York Rangers"
+          }
+        }
+      },
+      {
+        "id": "2025021047",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:00:00Z",
+        "home": "BUF",
+        "away": "TOR",
+        "teams": {
+          "BUF": {
+            "name": "Buffalo Sabres"
+          },
+          "TOR": {
+            "name": "Toronto Maple Leafs"
+          }
+        }
+      },
+      {
+        "id": "2025021048",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:00:00Z",
+        "home": "MTL",
+        "away": "SJS",
+        "teams": {
+          "MTL": {
+            "name": "Montr\u00e9al Canadiens"
+          },
+          "SJS": {
+            "name": "San Jose Sharks"
+          }
+        }
+      },
+      {
+        "id": "2025021049",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:00:00Z",
+        "home": "TBL",
+        "away": "CAR",
+        "teams": {
+          "TBL": {
+            "name": "Tampa Bay Lightning"
+          },
+          "CAR": {
+            "name": "Carolina Hurricanes"
+          }
+        }
+      },
+      {
+        "id": "2025021050",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:00:00Z",
+        "home": "NJD",
+        "away": "LAK",
+        "teams": {
+          "NJD": {
+            "name": "New Jersey Devils"
+          },
+          "LAK": {
+            "name": "Los Angeles Kings"
+          }
+        }
+      },
+      {
+        "id": "2025021051",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:00:00Z",
+        "home": "NYI",
+        "away": "CGY",
+        "teams": {
+          "NYI": {
+            "name": "New York Islanders"
+          },
+          "CGY": {
+            "name": "Calgary Flames"
+          }
+        }
+      },
+      {
+        "id": "2025021052",
+        "status": "scheduled",
+        "start_time": "2026-03-14T23:30:00Z",
+        "home": "PHI",
+        "away": "CBJ",
+        "teams": {
+          "PHI": {
+            "name": "Philadelphia Flyers"
+          },
+          "CBJ": {
+            "name": "Columbus Blue Jackets"
+          }
+        }
+      },
+      {
+        "id": "2025021053",
+        "status": "scheduled",
+        "start_time": "2026-03-15T00:00:00Z",
+        "home": "DAL",
+        "away": "DET",
+        "teams": {
+          "DAL": {
+            "name": "Dallas Stars"
+          },
+          "DET": {
+            "name": "Detroit Red Wings"
+          }
+        }
+      },
+      {
+        "id": "2025021054",
+        "status": "scheduled",
+        "start_time": "2026-03-15T01:00:00Z",
+        "home": "UTA",
+        "away": "PIT",
+        "teams": {
+          "UTA": {
+            "name": "Utah Mammoth"
+          },
+          "PIT": {
+            "name": "Pittsburgh Penguins"
+          }
+        }
+      },
+      {
+        "id": "2025021055",
+        "status": "scheduled",
+        "start_time": "2026-03-15T02:00:00Z",
+        "home": "VAN",
+        "away": "SEA",
+        "teams": {
+          "VAN": {
+            "name": "Vancouver Canucks"
+          },
+          "SEA": {
+            "name": "Seattle Kraken"
+          }
+        }
+      },
+      {
+        "id": "2025021056",
+        "status": "scheduled",
+        "start_time": "2026-03-15T02:00:00Z",
+        "home": "VGK",
+        "away": "CHI",
+        "teams": {
+          "VGK": {
+            "name": "Vegas Golden Knights"
+          },
+          "CHI": {
+            "name": "Chicago Blackhawks"
+          }
+        }
+      },
+      {
+        "id": "2025021057",
+        "status": "scheduled",
+        "start_time": "2026-03-15T19:00:00Z",
+        "home": "WPG",
+        "away": "STL",
+        "teams": {
+          "WPG": {
+            "name": "Winnipeg Jets"
+          },
+          "STL": {
+            "name": "St. Louis Blues"
+          }
+        }
+      },
+      {
+        "id": "2025021058",
+        "status": "scheduled",
+        "start_time": "2026-03-15T21:00:00Z",
+        "home": "OTT",
+        "away": "SJS",
+        "teams": {
+          "OTT": {
+            "name": "Ottawa Senators"
+          },
+          "SJS": {
+            "name": "San Jose Sharks"
+          }
+        }
+      },
+      {
+        "id": "2025021059",
+        "status": "scheduled",
+        "start_time": "2026-03-15T23:00:00Z",
+        "home": "MTL",
+        "away": "ANA",
+        "teams": {
+          "MTL": {
+            "name": "Montr\u00e9al Canadiens"
+          },
+          "ANA": {
+            "name": "Anaheim Ducks"
+          }
+        }
+      },
+      {
+        "id": "2025021060",
+        "status": "scheduled",
+        "start_time": "2026-03-15T23:30:00Z",
+        "home": "MIN",
+        "away": "TOR",
+        "teams": {
+          "MIN": {
+            "name": "Minnesota Wild"
+          },
+          "TOR": {
+            "name": "Toronto Maple Leafs"
+          }
+        }
+      },
+      {
+        "id": "2025021061",
+        "status": "scheduled",
+        "start_time": "2026-03-16T00:00:00Z",
+        "home": "EDM",
+        "away": "NSH",
+        "teams": {
+          "EDM": {
+            "name": "Edmonton Oilers"
+          },
+          "NSH": {
+            "name": "Nashville Predators"
+          }
+        }
+      },
+      {
+        "id": "2025021062",
+        "status": "scheduled",
+        "start_time": "2026-03-16T00:00:00Z",
+        "home": "SEA",
+        "away": "FLA",
+        "teams": {
+          "SEA": {
+            "name": "Seattle Kraken"
+          },
+          "FLA": {
+            "name": "Florida Panthers"
+          }
+        }
+      },
+      {
+        "id": "2025021063",
+        "status": "scheduled",
+        "start_time": "2026-03-16T23:00:00Z",
+        "home": "DET",
+        "away": "CGY",
+        "teams": {
+          "DET": {
+            "name": "Detroit Red Wings"
+          },
+          "CGY": {
+            "name": "Calgary Flames"
+          }
+        }
+      },
+      {
+        "id": "2025021064",
+        "status": "scheduled",
+        "start_time": "2026-03-16T23:00:00Z",
+        "home": "NJD",
+        "away": "BOS",
+        "teams": {
+          "NJD": {
+            "name": "New Jersey Devils"
+          },
+          "BOS": {
+            "name": "Boston Bruins"
+          }
+        }
+      },
+      {
+        "id": "2025021065",
+        "status": "scheduled",
+        "start_time": "2026-03-16T23:00:00Z",
+        "home": "NYR",
+        "away": "LAK",
+        "teams": {
+          "NYR": {
+            "name": "New York Rangers"
+          },
+          "LAK": {
+            "name": "Los Angeles Kings"
+          }
+        }
+      },
+      {
+        "id": "2025021066",
+        "status": "scheduled",
+        "start_time": "2026-03-17T00:00:00Z",
+        "home": "DAL",
+        "away": "UTA",
+        "teams": {
+          "DAL": {
+            "name": "Dallas Stars"
+          },
+          "UTA": {
+            "name": "Utah Mammoth"
+          }
+        }
+      },
+      {
+        "id": "2025021067",
+        "status": "scheduled",
+        "start_time": "2026-03-17T01:30:00Z",
+        "home": "COL",
+        "away": "PIT",
+        "teams": {
+          "COL": {
+            "name": "Colorado Avalanche"
+          },
+          "PIT": {
+            "name": "Pittsburgh Penguins"
+          }
+        }
+      },
+      {
+        "id": "2025021068",
+        "status": "scheduled",
+        "start_time": "2026-03-17T23:00:00Z",
+        "home": "TOR",
+        "away": "NYI",
+        "teams": {
+          "TOR": {
+            "name": "Toronto Maple Leafs"
+          },
+          "NYI": {
+            "name": "New York Islanders"
+          }
+        }
+      },
+      {
+        "id": "2025021069",
+        "status": "scheduled",
+        "start_time": "2026-03-17T23:00:00Z",
+        "home": "MTL",
+        "away": "BOS",
+        "teams": {
+          "MTL": {
+            "name": "Montr\u00e9al Canadiens"
+          },
+          "BOS": {
+            "name": "Boston Bruins"
+          }
+        }
+      },
+      {
+        "id": "2025021070",
+        "status": "scheduled",
+        "start_time": "2026-03-17T23:00:00Z",
+        "home": "CBJ",
+        "away": "CAR",
+        "teams": {
+          "CBJ": {
+            "name": "Columbus Blue Jackets"
+          },
+          "CAR": {
+            "name": "Carolina Hurricanes"
+          }
+        }
+      },
+      {
+        "id": "2025021072",
+        "status": "scheduled",
+        "start_time": "2026-03-17T23:30:00Z",
+        "home": "CHI",
+        "away": "MIN",
+        "teams": {
+          "CHI": {
+            "name": "Chicago Blackhawks"
+          },
+          "MIN": {
+            "name": "Minnesota Wild"
+          }
+        }
+      },
+      {
+        "id": "2025021071",
+        "status": "scheduled",
+        "start_time": "2026-03-18T00:00:00Z",
+        "home": "WPG",
+        "away": "NSH",
+        "teams": {
+          "WPG": {
+            "name": "Winnipeg Jets"
+          },
+          "NSH": {
+            "name": "Nashville Predators"
+          }
+        }
+      },
+      {
+        "id": "2025021073",
+        "status": "scheduled",
+        "start_time": "2026-03-18T01:00:00Z",
+        "home": "EDM",
+        "away": "SJS",
+        "teams": {
+          "EDM": {
+            "name": "Edmonton Oilers"
+          },
+          "SJS": {
+            "name": "San Jose Sharks"
+          }
+        }
+      },
+      {
+        "id": "2025021074",
+        "status": "scheduled",
+        "start_time": "2026-03-18T02:00:00Z",
+        "home": "VAN",
+        "away": "FLA",
+        "teams": {
+          "VAN": {
+            "name": "Vancouver Canucks"
+          },
+          "FLA": {
+            "name": "Florida Panthers"
+          }
+        }
+      },
+      {
+        "id": "2025021075",
+        "status": "scheduled",
+        "start_time": "2026-03-18T02:00:00Z",
+        "home": "VGK",
+        "away": "BUF",
+        "teams": {
+          "VGK": {
+            "name": "Vegas Golden Knights"
+          },
+          "BUF": {
+            "name": "Buffalo Sabres"
+          }
+        }
+      },
+      {
+        "id": "2025021076",
+        "status": "scheduled",
+        "start_time": "2026-03-18T02:00:00Z",
+        "home": "SEA",
+        "away": "TBL",
+        "teams": {
+          "SEA": {
+            "name": "Seattle Kraken"
+          },
+          "TBL": {
+            "name": "Tampa Bay Lightning"
+          }
         }
       }
     ]
