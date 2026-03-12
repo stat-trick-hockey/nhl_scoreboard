@@ -966,30 +966,28 @@ function buildGameCard(game) {
     statusHtml = `<span class="game-status scheduled">${datePart}${formatTime(game.start_time)}</span>`;
   }
 
-  // Win probability bar — shown on scheduled AND live games
+  const awayColor = getColor(away);
+  const homeColor = getColor(home);
+  const awayNameShort = game.teams[away].name.split(' ').slice(-1)[0];
+  const homeNameShort = game.teams[home].name.split(' ').slice(-1)[0];
+
+  // Win probability bar - shown on scheduled AND live games
   if (game.win_probability) {
     const homeProb = game.win_probability[home];
     const awayProb = game.win_probability[away];
-    const homeColor = getColor(home);
-    const awayColor2 = getColor(away);
     const liveLabel = isLive ? ' <span style="color:#ff2d55;font-size:7px;">LIVE WIN%</span>' : '';
     extraHtml = `
       <div class="win-prob-bar">
         <div class="win-prob-fill" style="width:${homeProb}%; background: linear-gradient(90deg, ${homeColor}dd, ${homeColor}88);"></div>
       </div>
       <div class="win-prob-labels">
-        <span style="color:${awayColor2}aa;">${away} ${awayProb.toFixed(1)}%</span>
+        <span style="color:${awayColor}aa;">${away} ${awayProb.toFixed(1)}%</span>
         ${liveLabel}
         <span style="color:${homeColor}aa;">${homeProb.toFixed(1)}% ${home}</span>
       </div>
     `;
   }
 
-  const awayNameShort = game.teams[away].name.split(' ').slice(-1)[0];
-  const homeNameShort = game.teams[home].name.split(' ').slice(-1)[0];
-
-  const awayColor = getColor(away);
-  const homeColor = getColor(home);
 
   return `
     <div class="game-card ${isLive ? 'live' : ''}">
