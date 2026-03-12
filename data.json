@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-03-12T23:01:01.020063+00:00",
+  "fetched_at": "2026-03-12T23:39:01.465911+00:00",
   "games": {
     "date": "2026-03-12",
     "games": [
       {
         "id": "2025021027",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "BOS",
         "away": "SJ",
@@ -17,14 +17,17 @@
             "name": "San Jose Sharks"
           }
         },
-        "win_probability": {
-          "BOS": 53.4,
-          "SJ": 46.6
-        }
+        "score": {
+          "BOS": 0,
+          "SJ": 1
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021028",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "BUF",
         "away": "WSH",
@@ -36,14 +39,17 @@
             "name": "Washington Capitals"
           }
         },
-        "win_probability": {
-          "BUF": 55.2,
-          "WSH": 44.8
-        }
+        "score": {
+          "BUF": 1,
+          "WSH": 0
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021029",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "TOR",
         "away": "ANA",
@@ -55,14 +61,17 @@
             "name": "Anaheim Ducks"
           }
         },
-        "win_probability": {
-          "TOR": 46.0,
-          "ANA": 54.0
-        }
+        "score": {
+          "TOR": 1,
+          "ANA": 2
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021030",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "TB",
         "away": "DET",
@@ -74,14 +83,17 @@
             "name": "Detroit Red Wings"
           }
         },
-        "win_probability": {
-          "TB": 51.7,
-          "DET": 48.3
-        }
+        "score": {
+          "TB": 0,
+          "DET": 0
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021031",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "FLA",
         "away": "CBJ",
@@ -93,14 +105,17 @@
             "name": "Columbus Blue Jackets"
           }
         },
-        "win_probability": {
-          "FLA": 46.8,
-          "CBJ": 53.2
-        }
+        "score": {
+          "FLA": 0,
+          "CBJ": 0
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021032",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "NJ",
         "away": "CGY",
@@ -112,14 +127,17 @@
             "name": "Calgary Flames"
           }
         },
-        "win_probability": {
-          "NJ": 53.7,
-          "CGY": 46.3
-        }
+        "score": {
+          "NJ": 0,
+          "CGY": 2
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021033",
-        "status": "scheduled",
+        "status": "inprogress",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "CAR",
         "away": "STL",
@@ -131,10 +149,13 @@
             "name": "St. Louis Blues"
           }
         },
-        "win_probability": {
-          "CAR": 59.5,
-          "STL": 40.5
-        }
+        "score": {
+          "CAR": 1,
+          "STL": 0
+        },
+        "period": 1,
+        "period_type": "REG",
+        "clock": ""
       },
       {
         "id": "2025021034",
