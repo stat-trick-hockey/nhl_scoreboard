@@ -9,7 +9,239 @@ Endpoints used:
   GET https://api-web.nhle.com/v1/schedule/now    — today's games
   GET https://api-web.nhle.com/v1/standings/now   — current standings
 
-No API key required.
+No API key required."""
+fetch_nhl.py
+============
+Fetches NHL schedule/scores, win probability, and standings from the
+free NHL Web API (api-web.nhle.com). No API key required.
+
+Endpoints used:
+  GET /v1/schedule/now                  — today + upcoming games
+  GET /v1/gamecenter/{id}/landing       — win probability (scheduled + live)
+  GET /v1/standings/now                 — current standings
+"""
+
+import json
+import time
+import pathlib
+import urllib.request
+import urllib.error
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+BASE = "https://api-web.nhle.com/v1"
+
+
+# ── HTTP helper ───────────────────────────────────────────────────────────────
+
+def get_json(path, retries=3, silent_404=False):
+    url = f"{BASE}/{path}"
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "nhl-arcade/1.0"})
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return json.loads(resp.read().decode())
+        except urllib.error.HTTPError as e:
+            if e.code == 404 and silent_404:
+                return {}
+            if e.code == 429 and attempt < retries - 1:
+                time.sleep(2 ** attempt)
+            else:
+                raise
+        except Exception:
+            if attempt == retries - 1:
+                raise
+            time.sleep(2 ** attempt)
+    return {}
+
+
+# ── helpers ───────────────────────────────────────────────────────────────────
+
+def map_state(s):
+    if s in ("FUT", "PRE"):
+        return "scheduled"
+    if s in ("LIVE", "CRIT"):
+        return "inprogress"
+    return "closed"
+
+
+def team_full_name(t):
+    place  = t.get("placeName",  {}).get("default", "")
+    common = t.get("commonName", {}).get("default", "")
+    return f"{place} {common}".strip() if place else common
+
+
+# ── win probability ───────────────────────────────────────────────────────────
+
+def fetch_win_prob(game_id, home_abbr, away_abbr):
+    """
+    Hits /v1/gamecenter/{id}/landing and pulls homeTeamWinProbability.
+    Returns {home_abbr: float, away_abbr: float} or None if unavailable.
+
+    The landing endpoint exposes `homeTeamWinProbability` (0–100 float)
+    for both scheduled and in-progress games.
+    """
+    try:
+        data = get_json(f"gamecenter/{game_id}/landing", silent_404=True)
+        # Field is at the top level of the landing response
+        home_prob = data.get("homeTeamWinProbability")
+        if home_prob is None:
+            # Also check inside a nested `game` key some versions use
+            home_prob = data.get("game", {}).get("homeTeamWinProbability")
+        if home_prob is None:
+            return None
+        home_prob = float(home_prob)
+        away_prob = round(100.0 - home_prob, 1)
+        home_prob = round(home_prob, 1)
+        return {home_abbr: home_prob, away_abbr: away_prob}
+    except Exception as e:
+        print(f"  Win prob fetch failed for {game_id}: {e}")
+        return None
+
+
+# ── fetch games ───────────────────────────────────────────────────────────────
+
+def fetch_today_games():
+    print("Fetching today's schedule…")
+    data = get_json("schedule/now")
+
+    game_week = data.get("gameWeek", [])
+    if not game_week:
+        print("  No gameWeek data.")
+        return {"date": "unknown", "games": []}
+
+    # Collect games from ALL day buckets (today + tomorrow's upcoming slate)
+    date_str = game_week[0].get("date", "unknown")
+    raw = []
+    for bucket in game_week:
+        raw.extend(bucket.get("games", []))
+
+    print(f"  {date_str}: {len(raw)} game(s) across {len(game_week)} day(s)")
+
+    games_out = []
+    prob_needed = []   # (index, game_id, home_abbr, away_abbr)
+
+    for g in raw:
+        state     = g.get("gameState", "FUT")
+        status    = map_state(state)
+        home_t    = g.get("homeTeam", {})
+        away_t    = g.get("awayTeam", {})
+        home_abbr = home_t.get("abbrev", "???")
+        away_abbr = away_t.get("abbrev", "???")
+
+        obj = {
+            "id":         str(g.get("id", "")),
+            "status":     status,
+            "start_time": g.get("startTimeUTC", ""),
+            "home":       home_abbr,
+            "away":       away_abbr,
+            "teams": {
+                home_abbr: {"name": team_full_name(home_t)},
+                away_abbr: {"name": team_full_name(away_t)},
+            },
+        }
+
+        # Scores
+        hs  = home_t.get("score")
+        as_ = away_t.get("score")
+        if hs is not None and as_ is not None:
+            obj["score"] = {home_abbr: hs, away_abbr: as_}
+
+        # Live clock / period
+        if status == "inprogress":
+            pd = g.get("periodDescriptor", {})
+            obj["period"]      = pd.get("number", 1)
+            obj["period_type"] = pd.get("periodType", "REG")
+            obj["clock"]       = g.get("clock", {}).get("timeRemaining", "")
+
+        games_out.append(obj)
+
+        # Queue win probability fetch for scheduled + live games
+        if status in ("scheduled", "inprogress"):
+            prob_needed.append((len(games_out) - 1, obj["id"], home_abbr, away_abbr))
+
+    # Fetch win probabilities in parallel (up to 8 threads)
+    if prob_needed:
+        print(f"  Fetching win probability for {len(prob_needed)} game(s)…")
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            futures = {
+                pool.submit(fetch_win_prob, gid, ha, aa): idx
+                for idx, gid, ha, aa in prob_needed
+            }
+            for future in as_completed(futures):
+                idx = futures[future]
+                prob = future.result()
+                if prob:
+                    games_out[idx]["win_probability"] = prob
+
+    return {"date": date_str, "games": games_out}
+
+
+# ── fetch standings ───────────────────────────────────────────────────────────
+
+CONF_LABEL = {
+    "Eastern": "EASTERN CONFERENCE",
+    "Western": "WESTERN CONFERENCE",
+}
+
+def fetch_standings():
+    print("Fetching standings…")
+    data = get_json("standings/now")
+    raw  = data.get("standings", [])
+    print(f"  {len(raw)} teams")
+
+    out = []
+    for t in raw:
+        conf_raw = t.get("conferenceName", "")
+        div_raw  = t.get("divisionName", "")
+        conf_lbl = CONF_LABEL.get(conf_raw, conf_raw.upper() + " CONFERENCE")
+
+        wins      = t.get("wins", 0)
+        losses    = t.get("losses", 0)
+        ot_losses = t.get("otLosses", 0)
+        gp        = t.get("gamesPlayed", 1) or 1
+        point_pct = float(t.get("pointPctg", wins / gp))
+
+        div_seq  = t.get("divisionSequence",  99)
+        conf_seq = t.get("conferenceSequence", 99)
+        wc_seq   = t.get("wildCardSequence",   0)
+
+        rank = {"division": div_seq, "conference": conf_seq}
+        if wc_seq and wc_seq > 0:
+            rank["wildcard"] = wc_seq
+
+        out.append({
+            "rank":           rank,
+            "team":           {"name": team_full_name(t) or t.get("teamName", {}).get("default", "")},
+            "wins":           wins,
+            "losses":         losses + ot_losses,
+            "win_percentage": round(point_pct, 3),
+            "conference":     conf_lbl,
+            "division":       div_raw,
+        })
+
+    return out
+
+
+# ── main ──────────────────────────────────────────────────────────────────────
+
+def main():
+    games_data     = fetch_today_games()
+    standings_data = fetch_standings()
+
+    payload = {
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
+        "games":      games_data,
+        "standings":  standings_data,
+    }
+
+    out_path = pathlib.Path(__file__).parent.parent / "data.json"
+    out_path.write_text(json.dumps(payload, indent=2))
+    print(f"\n✓ data.json written ({len(games_data['games'])} games, {len(standings_data)} teams)")
+
+
+if __name__ == "__main__":
+    main()
 """
 
 import json
