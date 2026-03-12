@@ -71,10 +71,16 @@ def fetch_today_games():
         print("  No gameWeek data.")
         return {"date": "unknown", "games": []}
 
-    bucket   = game_week[0]
-    date_str = bucket.get("date", "unknown")
-    raw      = bucket.get("games", [])
-    print(f"  {date_str}: {len(raw)} game(s)")
+    # Collect games from ALL buckets in the response:
+    #   bucket[0] = today  (live / finished games)
+    #   bucket[1] = tomorrow  (upcoming — only present when today has games)
+    # This ensures the "upcoming" section is always populated.
+    date_str = game_week[0].get("date", "unknown")
+    raw = []
+    for bucket in game_week:
+        raw.extend(bucket.get("games", []))
+
+    print(f"  {date_str}: {len(raw)} game(s) across {len(game_week)} day(s)")
 
     games_out = []
     for g in raw:
