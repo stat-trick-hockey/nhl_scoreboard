@@ -1,0 +1,496 @@
+{
+  "fetched_at": "2026-03-12T14:18:26.290131+00:00",
+  "games": {
+    "date": "2026-03-11",
+    "games": [
+      {
+        "id": "2025021025",
+        "status": "closed",
+        "start_time": "2026-03-11T23:30:00Z",
+        "home": "OTT",
+        "away": "MTL",
+        "teams": {
+          "OTT": {
+            "name": "Ottawa Senators"
+          },
+          "MTL": {
+            "name": "Montr\u00e9al Canadiens"
+          }
+        },
+        "score": {
+          "OTT": 2,
+          "MTL": 3
+        }
+      },
+      {
+        "id": "2025021026",
+        "status": "closed",
+        "start_time": "2026-03-11T23:30:00Z",
+        "home": "PHI",
+        "away": "WSH",
+        "teams": {
+          "PHI": {
+            "name": "Philadelphia Flyers"
+          },
+          "WSH": {
+            "name": "Washington Capitals"
+          }
+        },
+        "score": {
+          "PHI": 4,
+          "WSH": 1
+        }
+      }
+    ]
+  },
+  "standings": [
+    {
+      "rank": {
+        "division": 1,
+        "conference": 1
+      },
+      "team": {
+        "name": "Colorado"
+      },
+      "wins": 43,
+      "losses": 20,
+      "win_percentage": 0.754,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 2,
+        "conference": 2
+      },
+      "team": {
+        "name": "Dallas"
+      },
+      "wins": 40,
+      "losses": 24,
+      "win_percentage": 0.703,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 1,
+        "conference": 1
+      },
+      "team": {
+        "name": "Carolina"
+      },
+      "wins": 41,
+      "losses": 23,
+      "win_percentage": 0.688,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 3,
+        "conference": 3
+      },
+      "team": {
+        "name": "Minnesota"
+      },
+      "wins": 38,
+      "losses": 27,
+      "win_percentage": 0.669,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 1,
+        "conference": 2
+      },
+      "team": {
+        "name": "Buffalo"
+      },
+      "wins": 40,
+      "losses": 25,
+      "win_percentage": 0.662,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 2,
+        "conference": 3
+      },
+      "team": {
+        "name": "Tampa Bay"
+      },
+      "wins": 39,
+      "losses": 24,
+      "win_percentage": 0.651,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 3,
+        "conference": 4
+      },
+      "team": {
+        "name": "Montr\u00e9al"
+      },
+      "wins": 36,
+      "losses": 28,
+      "win_percentage": 0.641,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 2,
+        "conference": 5
+      },
+      "team": {
+        "name": "Pittsburgh"
+      },
+      "wins": 32,
+      "losses": 32,
+      "win_percentage": 0.617,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 4,
+        "conference": 6
+      },
+      "team": {
+        "name": "Detroit"
+      },
+      "wins": 36,
+      "losses": 29,
+      "win_percentage": 0.608,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 3,
+        "conference": 7
+      },
+      "team": {
+        "name": "NY Islanders"
+      },
+      "wins": 37,
+      "losses": 28,
+      "win_percentage": 0.608,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 5,
+        "conference": 8
+      },
+      "team": {
+        "name": "Boston"
+      },
+      "wins": 36,
+      "losses": 28,
+      "win_percentage": 0.609,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 4,
+        "conference": 9
+      },
+      "team": {
+        "name": "Columbus"
+      },
+      "wins": 33,
+      "losses": 31,
+      "win_percentage": 0.594,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 1,
+        "conference": 4
+      },
+      "team": {
+        "name": "Anaheim"
+      },
+      "wins": 36,
+      "losses": 28,
+      "win_percentage": 0.586,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 6,
+        "conference": 10
+      },
+      "team": {
+        "name": "Ottawa"
+      },
+      "wins": 32,
+      "losses": 32,
+      "win_percentage": 0.57,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 4,
+        "conference": 5
+      },
+      "team": {
+        "name": "Utah"
+      },
+      "wins": 34,
+      "losses": 31,
+      "win_percentage": 0.562,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 2,
+        "conference": 6
+      },
+      "team": {
+        "name": "Edmonton"
+      },
+      "wins": 32,
+      "losses": 33,
+      "win_percentage": 0.554,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 3,
+        "conference": 7
+      },
+      "team": {
+        "name": "Vegas"
+      },
+      "wins": 29,
+      "losses": 36,
+      "win_percentage": 0.554,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 5,
+        "conference": 11
+      },
+      "team": {
+        "name": "Philadelphia"
+      },
+      "wins": 30,
+      "losses": 34,
+      "win_percentage": 0.555,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 6,
+        "conference": 12
+      },
+      "team": {
+        "name": "Washington"
+      },
+      "wins": 32,
+      "losses": 34,
+      "win_percentage": 0.538,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 4,
+        "conference": 8
+      },
+      "team": {
+        "name": "Seattle"
+      },
+      "wins": 29,
+      "losses": 34,
+      "win_percentage": 0.532,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 7,
+        "conference": 13
+      },
+      "team": {
+        "name": "Florida"
+      },
+      "wins": 32,
+      "losses": 32,
+      "win_percentage": 0.523,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 5,
+        "conference": 9
+      },
+      "team": {
+        "name": "Los Angeles"
+      },
+      "wins": 26,
+      "losses": 38,
+      "win_percentage": 0.523,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 6,
+        "conference": 10
+      },
+      "team": {
+        "name": "San Jose"
+      },
+      "wins": 30,
+      "losses": 32,
+      "win_percentage": 0.532,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 5,
+        "conference": 11
+      },
+      "team": {
+        "name": "Nashville"
+      },
+      "wins": 29,
+      "losses": 35,
+      "win_percentage": 0.516,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 7,
+        "conference": 14
+      },
+      "team": {
+        "name": "New Jersey"
+      },
+      "wins": 32,
+      "losses": 32,
+      "win_percentage": 0.516,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 8,
+        "conference": 15
+      },
+      "team": {
+        "name": "Toronto"
+      },
+      "wins": 27,
+      "losses": 38,
+      "win_percentage": 0.5,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Atlantic"
+    },
+    {
+      "rank": {
+        "division": 6,
+        "conference": 12
+      },
+      "team": {
+        "name": "Winnipeg"
+      },
+      "wins": 26,
+      "losses": 37,
+      "win_percentage": 0.492,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 7,
+        "conference": 13
+      },
+      "team": {
+        "name": "St. Louis"
+      },
+      "wins": 25,
+      "losses": 39,
+      "win_percentage": 0.469,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 8,
+        "conference": 16
+      },
+      "team": {
+        "name": "NY Rangers"
+      },
+      "wins": 26,
+      "losses": 38,
+      "win_percentage": 0.469,
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
+    },
+    {
+      "rank": {
+        "division": 8,
+        "conference": 14
+      },
+      "team": {
+        "name": "Chicago"
+      },
+      "wins": 24,
+      "losses": 40,
+      "win_percentage": 0.461,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
+        "division": 7,
+        "conference": 15
+      },
+      "team": {
+        "name": "Calgary"
+      },
+      "wins": 25,
+      "losses": 39,
+      "win_percentage": 0.445,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    },
+    {
+      "rank": {
+        "division": 8,
+        "conference": 16
+      },
+      "team": {
+        "name": "Vancouver"
+      },
+      "wins": 19,
+      "losses": 45,
+      "win_percentage": 0.359,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Pacific"
+    }
+  ]
+}
