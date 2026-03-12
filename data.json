@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-03-12T15:18:25.406842+00:00",
+  "fetched_at": "2026-03-12T15:32:05.286644+00:00",
   "games": {
     "date": "2026-03-11",
     "games": [
@@ -46,14 +46,18 @@
         "status": "scheduled",
         "start_time": "2026-03-12T23:00:00Z",
         "home": "BOS",
-        "away": "SJS",
+        "away": "SJ",
         "teams": {
           "BOS": {
             "name": "Boston Bruins"
           },
-          "SJS": {
+          "SJ": {
             "name": "San Jose Sharks"
           }
+        },
+        "win_probability": {
+          "BOS": 53.4,
+          "SJ": 46.6
         }
       },
       {
@@ -69,6 +73,10 @@
           "WSH": {
             "name": "Washington Capitals"
           }
+        },
+        "win_probability": {
+          "BUF": 55.2,
+          "WSH": 44.8
         }
       },
       {
@@ -84,21 +92,29 @@
           "ANA": {
             "name": "Anaheim Ducks"
           }
+        },
+        "win_probability": {
+          "TOR": 46.0,
+          "ANA": 54.0
         }
       },
       {
         "id": "2025021030",
         "status": "scheduled",
         "start_time": "2026-03-12T23:00:00Z",
-        "home": "TBL",
+        "home": "TB",
         "away": "DET",
         "teams": {
-          "TBL": {
+          "TB": {
             "name": "Tampa Bay Lightning"
           },
           "DET": {
             "name": "Detroit Red Wings"
           }
+        },
+        "win_probability": {
+          "TB": 51.7,
+          "DET": 48.3
         }
       },
       {
@@ -114,21 +130,29 @@
           "CBJ": {
             "name": "Columbus Blue Jackets"
           }
+        },
+        "win_probability": {
+          "FLA": 46.8,
+          "CBJ": 53.2
         }
       },
       {
         "id": "2025021032",
         "status": "scheduled",
         "start_time": "2026-03-12T23:00:00Z",
-        "home": "NJD",
+        "home": "NJ",
         "away": "CGY",
         "teams": {
-          "NJD": {
+          "NJ": {
             "name": "New Jersey Devils"
           },
           "CGY": {
             "name": "Calgary Flames"
           }
+        },
+        "win_probability": {
+          "NJ": 53.7,
+          "CGY": 46.3
         }
       },
       {
@@ -144,6 +168,10 @@
           "STL": {
             "name": "St. Louis Blues"
           }
+        },
+        "win_probability": {
+          "CAR": 59.5,
+          "STL": 40.5
         }
       },
       {
@@ -159,6 +187,10 @@
           "EDM": {
             "name": "Edmonton Oilers"
           }
+        },
+        "win_probability": {
+          "DAL": 55.9,
+          "EDM": 44.1
         }
       },
       {
@@ -174,6 +206,10 @@
           "PHI": {
             "name": "Philadelphia Flyers"
           }
+        },
+        "win_probability": {
+          "MIN": 54.7,
+          "PHI": 45.3
         }
       },
       {
@@ -189,6 +225,10 @@
           "NYR": {
             "name": "New York Rangers"
           }
+        },
+        "win_probability": {
+          "WPG": 51.2,
+          "NYR": 48.8
         }
       },
       {
@@ -204,6 +244,10 @@
           "CHI": {
             "name": "Chicago Blackhawks"
           }
+        },
+        "win_probability": {
+          "UTA": 54.9,
+          "CHI": 45.1
         }
       },
       {
@@ -219,6 +263,10 @@
           "NSH": {
             "name": "Nashville Predators"
           }
+        },
+        "win_probability": {
+          "VAN": 41.0,
+          "NSH": 59.0
         }
       },
       {
@@ -234,6 +282,10 @@
           "PIT": {
             "name": "Pittsburgh Penguins"
           }
+        },
+        "win_probability": {
+          "VGK": 47.3,
+          "PIT": 52.7
         }
       },
       {
@@ -249,6 +301,10 @@
           "COL": {
             "name": "Colorado Avalanche"
           }
+        },
+        "win_probability": {
+          "SEA": 41.4,
+          "COL": 58.6
         }
       },
       {
@@ -256,14 +312,18 @@
         "status": "scheduled",
         "start_time": "2026-03-13T23:00:00Z",
         "home": "NYI",
-        "away": "LAK",
+        "away": "LA",
         "teams": {
           "NYI": {
             "name": "New York Islanders"
           },
-          "LAK": {
+          "LA": {
             "name": "Los Angeles Kings"
           }
+        },
+        "win_probability": {
+          "NYI": 53.8,
+          "LA": 46.2
         }
       },
       {
@@ -279,6 +339,10 @@
           "EDM": {
             "name": "Edmonton Oilers"
           }
+        },
+        "win_probability": {
+          "STL": 45.8,
+          "EDM": 54.2
         }
       },
       {
@@ -294,6 +358,10 @@
           "ANA": {
             "name": "Anaheim Ducks"
           }
+        },
+        "win_probability": {
+          "OTT": 49.3,
+          "ANA": 50.7
         }
       },
       {
@@ -309,6 +377,10 @@
           "BOS": {
             "name": "Boston Bruins"
           }
+        },
+        "win_probability": {
+          "WSH": 46.9,
+          "BOS": 53.1
         }
       },
       {
@@ -324,6 +396,10 @@
           "COL": {
             "name": "Colorado Avalanche"
           }
+        },
+        "win_probability": {
+          "WPG": 39.5,
+          "COL": 60.5
         }
       },
       {
@@ -339,6 +415,10 @@
           "NYR": {
             "name": "New York Rangers"
           }
+        },
+        "win_probability": {
+          "MIN": 58.8,
+          "NYR": 41.2
         }
       },
       {
@@ -354,6 +434,10 @@
           "TOR": {
             "name": "Toronto Maple Leafs"
           }
+        },
+        "win_probability": {
+          "BUF": 57.0,
+          "TOR": 43.0
         }
       },
       {
@@ -361,44 +445,56 @@
         "status": "scheduled",
         "start_time": "2026-03-14T23:00:00Z",
         "home": "MTL",
-        "away": "SJS",
+        "away": "SJ",
         "teams": {
           "MTL": {
             "name": "Montr\u00e9al Canadiens"
           },
-          "SJS": {
+          "SJ": {
             "name": "San Jose Sharks"
           }
+        },
+        "win_probability": {
+          "MTL": 54.6,
+          "SJ": 45.4
         }
       },
       {
         "id": "2025021049",
         "status": "scheduled",
         "start_time": "2026-03-14T23:00:00Z",
-        "home": "TBL",
+        "home": "TB",
         "away": "CAR",
         "teams": {
-          "TBL": {
+          "TB": {
             "name": "Tampa Bay Lightning"
           },
           "CAR": {
             "name": "Carolina Hurricanes"
           }
+        },
+        "win_probability": {
+          "TB": 48.6,
+          "CAR": 51.4
         }
       },
       {
         "id": "2025021050",
         "status": "scheduled",
         "start_time": "2026-03-14T23:00:00Z",
-        "home": "NJD",
-        "away": "LAK",
+        "home": "NJ",
+        "away": "LA",
         "teams": {
-          "NJD": {
+          "NJ": {
             "name": "New Jersey Devils"
           },
-          "LAK": {
+          "LA": {
             "name": "Los Angeles Kings"
           }
+        },
+        "win_probability": {
+          "NJ": 49.7,
+          "LA": 50.3
         }
       },
       {
@@ -414,6 +510,10 @@
           "CGY": {
             "name": "Calgary Flames"
           }
+        },
+        "win_probability": {
+          "NYI": 57.7,
+          "CGY": 42.3
         }
       },
       {
@@ -429,6 +529,10 @@
           "CBJ": {
             "name": "Columbus Blue Jackets"
           }
+        },
+        "win_probability": {
+          "PHI": 48.3,
+          "CBJ": 51.7
         }
       },
       {
@@ -444,6 +548,10 @@
           "DET": {
             "name": "Detroit Red Wings"
           }
+        },
+        "win_probability": {
+          "DAL": 53.6,
+          "DET": 46.4
         }
       },
       {
@@ -459,6 +567,10 @@
           "PIT": {
             "name": "Pittsburgh Penguins"
           }
+        },
+        "win_probability": {
+          "UTA": 47.7,
+          "PIT": 52.3
         }
       },
       {
@@ -474,6 +586,10 @@
           "SEA": {
             "name": "Seattle Kraken"
           }
+        },
+        "win_probability": {
+          "VAN": 40.3,
+          "SEA": 59.7
         }
       },
       {
@@ -489,6 +605,10 @@
           "CHI": {
             "name": "Chicago Blackhawks"
           }
+        },
+        "win_probability": {
+          "VGK": 54.6,
+          "CHI": 45.4
         }
       },
       {
@@ -504,6 +624,10 @@
           "STL": {
             "name": "St. Louis Blues"
           }
+        },
+        "win_probability": {
+          "WPG": 51.2,
+          "STL": 48.8
         }
       },
       {
@@ -511,14 +635,18 @@
         "status": "scheduled",
         "start_time": "2026-03-15T21:00:00Z",
         "home": "OTT",
-        "away": "SJS",
+        "away": "SJ",
         "teams": {
           "OTT": {
             "name": "Ottawa Senators"
           },
-          "SJS": {
+          "SJ": {
             "name": "San Jose Sharks"
           }
+        },
+        "win_probability": {
+          "OTT": 51.7,
+          "SJ": 48.3
         }
       },
       {
@@ -534,6 +662,10 @@
           "ANA": {
             "name": "Anaheim Ducks"
           }
+        },
+        "win_probability": {
+          "MTL": 52.2,
+          "ANA": 47.8
         }
       },
       {
@@ -549,6 +681,10 @@
           "TOR": {
             "name": "Toronto Maple Leafs"
           }
+        },
+        "win_probability": {
+          "MIN": 57.2,
+          "TOR": 42.8
         }
       },
       {
@@ -564,6 +700,10 @@
           "NSH": {
             "name": "Nashville Predators"
           }
+        },
+        "win_probability": {
+          "EDM": 51.8,
+          "NSH": 48.2
         }
       },
       {
@@ -579,6 +719,10 @@
           "FLA": {
             "name": "Florida Panthers"
           }
+        },
+        "win_probability": {
+          "SEA": 50.4,
+          "FLA": 49.6
         }
       },
       {
@@ -594,21 +738,29 @@
           "CGY": {
             "name": "Calgary Flames"
           }
+        },
+        "win_probability": {
+          "DET": 57.7,
+          "CGY": 42.3
         }
       },
       {
         "id": "2025021064",
         "status": "scheduled",
         "start_time": "2026-03-16T23:00:00Z",
-        "home": "NJD",
+        "home": "NJ",
         "away": "BOS",
         "teams": {
-          "NJD": {
+          "NJ": {
             "name": "New Jersey Devils"
           },
           "BOS": {
             "name": "Boston Bruins"
           }
+        },
+        "win_probability": {
+          "NJ": 45.9,
+          "BOS": 54.1
         }
       },
       {
@@ -616,14 +768,18 @@
         "status": "scheduled",
         "start_time": "2026-03-16T23:00:00Z",
         "home": "NYR",
-        "away": "LAK",
+        "away": "LA",
         "teams": {
           "NYR": {
             "name": "New York Rangers"
           },
-          "LAK": {
+          "LA": {
             "name": "Los Angeles Kings"
           }
+        },
+        "win_probability": {
+          "NYR": 47.3,
+          "LA": 52.7
         }
       },
       {
@@ -639,6 +795,10 @@
           "UTA": {
             "name": "Utah Mammoth"
           }
+        },
+        "win_probability": {
+          "DAL": 55.6,
+          "UTA": 44.4
         }
       },
       {
@@ -654,6 +814,10 @@
           "PIT": {
             "name": "Pittsburgh Penguins"
           }
+        },
+        "win_probability": {
+          "COL": 55.0,
+          "PIT": 45.0
         }
       },
       {
@@ -669,6 +833,10 @@
           "NYI": {
             "name": "New York Islanders"
           }
+        },
+        "win_probability": {
+          "TOR": 45.1,
+          "NYI": 54.9
         }
       },
       {
@@ -684,6 +852,10 @@
           "BOS": {
             "name": "Boston Bruins"
           }
+        },
+        "win_probability": {
+          "MTL": 51.3,
+          "BOS": 48.7
         }
       },
       {
@@ -699,6 +871,10 @@
           "CAR": {
             "name": "Carolina Hurricanes"
           }
+        },
+        "win_probability": {
+          "CBJ": 46.3,
+          "CAR": 53.7
         }
       },
       {
@@ -714,6 +890,10 @@
           "MIN": {
             "name": "Minnesota Wild"
           }
+        },
+        "win_probability": {
+          "CHI": 40.8,
+          "MIN": 59.2
         }
       },
       {
@@ -729,6 +909,10 @@
           "NSH": {
             "name": "Nashville Predators"
           }
+        },
+        "win_probability": {
+          "WPG": 48.8,
+          "NSH": 51.2
         }
       },
       {
@@ -736,14 +920,18 @@
         "status": "scheduled",
         "start_time": "2026-03-18T01:00:00Z",
         "home": "EDM",
-        "away": "SJS",
+        "away": "SJ",
         "teams": {
           "EDM": {
             "name": "Edmonton Oilers"
           },
-          "SJS": {
+          "SJ": {
             "name": "San Jose Sharks"
           }
+        },
+        "win_probability": {
+          "EDM": 51.0,
+          "SJ": 49.0
         }
       },
       {
@@ -759,6 +947,10 @@
           "FLA": {
             "name": "Florida Panthers"
           }
+        },
+        "win_probability": {
+          "VAN": 40.7,
+          "FLA": 59.3
         }
       },
       {
@@ -774,6 +966,10 @@
           "BUF": {
             "name": "Buffalo Sabres"
           }
+        },
+        "win_probability": {
+          "VGK": 45.6,
+          "BUF": 54.4
         }
       },
       {
@@ -781,14 +977,18 @@
         "status": "scheduled",
         "start_time": "2026-03-18T02:00:00Z",
         "home": "SEA",
-        "away": "TBL",
+        "away": "TB",
         "teams": {
           "SEA": {
             "name": "Seattle Kraken"
           },
-          "TBL": {
+          "TB": {
             "name": "Tampa Bay Lightning"
           }
+        },
+        "win_probability": {
+          "SEA": 45.0,
+          "TB": 55.0
         }
       }
     ]
