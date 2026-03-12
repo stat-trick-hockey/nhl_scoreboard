@@ -1,15 +1,12 @@
-# -*- coding: utf-8 -*-
-"""
-fetch_nhl.py
-============
-Fetches NHL schedule/scores, win probability, and standings from the
-free NHL Web API (api-web.nhle.com). No API key required.
-
-Endpoints used:
-  GET /v1/schedule/now                  - today + upcoming games
-  GET /v1/gamecenter/{id}/landing       - win probability (scheduled + live)
-  GET /v1/standings/now                 - current standings
-"""
+# fetch_nhl.py
+# Fetches NHL schedule/scores, win probability, and standings.
+# No API key required.
+#
+# Endpoints:
+#   GET /v1/schedule/now        - today + upcoming games
+#                                 homeTeamWinProbability is ON the game object here
+#   GET /v1/gamecenter/{id}/landing  - win prob for LIVE games only
+#   GET /v1/standings/now       - current standings
 
 import json
 import time
@@ -21,8 +18,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 BASE = "https://api-web.nhle.com/v1"
 
-
-# -- HTTP helper ---------------------------------------------------------------
 
 def get_json(path, retries=3, silent_404=False):
     url = f"{BASE}/{path}"
@@ -45,8 +40,6 @@ def get_json(path, retries=3, silent_404=False):
     return {}
 
 
-# -- helpers -------------------------------------------------------------------
-
 def map_state(s):
     if s in ("FUT", "PRE"):
         return "scheduled"
@@ -61,35 +54,22 @@ def team_full_name(t):
     return f"{place} {common}".strip() if place else common
 
 
-# -- win probability -----------------------------------------------------------
-
-def fetch_win_prob(game_id, home_abbr, away_abbr):
-    """
-    Hits /v1/gamecenter/{id}/landing and pulls homeTeamWinProbability.
-    Returns {home_abbr: float, away_abbr: float} or None if unavailable.
-
-    The landing endpoint exposes `homeTeamWinProbability` (0-100 float)
-    for both scheduled and in-progress games.
-    """
+def fetch_win_prob_live(game_id, home_abbr, away_abbr):
+    """For LIVE games: hits gamecenter landing for homeTeamWinProbability."""
     try:
         data = get_json(f"gamecenter/{game_id}/landing", silent_404=True)
-        # Field is at the top level of the landing response
         home_prob = data.get("homeTeamWinProbability")
         if home_prob is None:
-            # Also check inside a nested `game` key some versions use
             home_prob = data.get("game", {}).get("homeTeamWinProbability")
         if home_prob is None:
             return None
-        home_prob = float(home_prob)
+        home_prob = round(float(home_prob), 1)
         away_prob = round(100.0 - home_prob, 1)
-        home_prob = round(home_prob, 1)
         return {home_abbr: home_prob, away_abbr: away_prob}
     except Exception as e:
         print(f"  Win prob fetch failed for {game_id}: {e}")
         return None
 
-
-# -- fetch games ---------------------------------------------------------------
 
 def fetch_today_games():
     print("Fetching today's schedule...")
@@ -100,7 +80,6 @@ def fetch_today_games():
         print("  No gameWeek data.")
         return {"date": "unknown", "games": []}
 
-    # Collect games from ALL day buckets (today + tomorrow's upcoming slate)
     date_str = game_week[0].get("date", "unknown")
     raw = []
     for bucket in game_week:
@@ -109,7 +88,7 @@ def fetch_today_games():
     print(f"  {date_str}: {len(raw)} game(s) across {len(game_week)} day(s)")
 
     games_out = []
-    prob_needed = []   # (index, game_id, home_abbr, away_abbr)
+    live_prob_needed = []  # (index, game_id, home_abbr, away_abbr)
 
     for g in raw:
         state     = g.get("gameState", "FUT")
@@ -144,19 +123,28 @@ def fetch_today_games():
             obj["period_type"] = pd.get("periodType", "REG")
             obj["clock"]       = g.get("clock", {}).get("timeRemaining", "")
 
+        # Win probability for SCHEDULED games:
+        # homeTeamWinProbability lives directly on the schedule game object (0-100)
+        if status == "scheduled":
+            home_prob = g.get("homeTeamWinProbability")
+            if home_prob is not None:
+                home_prob = round(float(home_prob), 1)
+                away_prob = round(100.0 - home_prob, 1)
+                obj["win_probability"] = {home_abbr: home_prob, away_abbr: away_prob}
+
         games_out.append(obj)
 
-        # Queue win probability fetch for scheduled + live games
-        if status in ("scheduled", "inprogress"):
-            prob_needed.append((len(games_out) - 1, obj["id"], home_abbr, away_abbr))
+        # For LIVE games, fetch win prob from gamecenter endpoint
+        if status == "inprogress":
+            live_prob_needed.append((len(games_out) - 1, obj["id"], home_abbr, away_abbr))
 
-    # Fetch win probabilities in parallel (up to 8 threads)
-    if prob_needed:
-        print(f"  Fetching win probability for {len(prob_needed)} game(s)...")
+    # Fetch live win probabilities in parallel
+    if live_prob_needed:
+        print(f"  Fetching live win probability for {len(live_prob_needed)} game(s)...")
         with ThreadPoolExecutor(max_workers=8) as pool:
             futures = {
-                pool.submit(fetch_win_prob, gid, ha, aa): idx
-                for idx, gid, ha, aa in prob_needed
+                pool.submit(fetch_win_prob_live, gid, ha, aa): idx
+                for idx, gid, ha, aa in live_prob_needed
             }
             for future in as_completed(futures):
                 idx = futures[future]
@@ -166,8 +154,6 @@ def fetch_today_games():
 
     return {"date": date_str, "games": games_out}
 
-
-# -- fetch standings -----------------------------------------------------------
 
 CONF_LABEL = {
     "Eastern": "EASTERN CONFERENCE",
@@ -212,8 +198,6 @@ def fetch_standings():
 
     return out
 
-
-# -- main ----------------------------------------------------------------------
 
 def main():
     games_data     = fetch_today_games()
