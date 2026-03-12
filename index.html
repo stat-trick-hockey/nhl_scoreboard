@@ -434,8 +434,8 @@
   .ticker-track {
     display: flex;
     gap: 40px;
-    animation: ticker 5s linear infinite;
     width: max-content;
+    will-change: transform;
   }
 
   .ticker-item {
@@ -904,7 +904,7 @@ let STANDINGS = null;
 const ABBR = {"Buffalo Sabres":"BUF","Tampa Bay Lightning":"TB","Montreal Canadiens":"MTL","Detroit Red Wings":"DET","Boston Bruins":"BOS","Ottawa Senators":"OTT","Florida Panthers":"FLA","Toronto Maple Leafs":"TOR","Carolina Hurricanes":"CAR","Pittsburgh Penguins":"PIT","New York Islanders":"NYI","Columbus Blue Jackets":"CBJ","Washington Capitals":"WSH","Philadelphia Flyers":"PHI","New Jersey Devils":"NJ","New York Rangers":"NYR","Anaheim Ducks":"ANA","Edmonton Oilers":"EDM","Vegas Golden Knights":"VGK","Seattle Kraken":"SEA","Los Angeles Kings":"LA","San Jose Sharks":"SJ","Calgary Flames":"CGY","Vancouver Canucks":"VAN","Colorado Avalanche":"COL","Dallas Stars":"DAL","Minnesota Wild":"MIN","Utah Mammoth":"UTA","Nashville Predators":"NSH","Winnipeg Jets":"WPG","St. Louis Blues":"STL","Chicago Blackhawks":"CHI"};
 
 // Team color palette for bars
-const TEAM_COLORS = {"BUF":"#003087","TB":"#002868","MTL":"#af1e2d","DET":"#ce1126","BOS":"#fcb514","OTT":"#e31837","FLA":"#041e42","TOR":"#003e7e","CAR":"#cc0000","PIT":"#fcb514","NYI":"#003087","CBJ":"#002654","WSH":"#041e42","PHI":"#f74902","NJ":"#ce1126","NYR":"#0038a8","ANA":"#fc4c02","EDM":"#041e42","VGK":"#b4975a","SEA":"#99d9d9","LA":"#111111","SJ":"#006d75","CGY":"#c8102e","VAN":"#00843d","COL":"#6f263d","DAL":"#006847","MIN":"#154734","UTA":"#010101","NSH":"#ffb81c","WPG":"#041e42","STL":"#002f87","CHI":"#cf0a2c"};
+const TEAM_COLORS = {"BUF":"#003087","TB":"#002868","TBL":"#002868","MTL":"#af1e2d","DET":"#ce1126","BOS":"#fcb514","OTT":"#e31837","FLA":"#041e42","TOR":"#003e7e","CAR":"#cc0000","PIT":"#fcb514","NYI":"#003087","CBJ":"#002654","WSH":"#041e42","PHI":"#f74902","NJ":"#ce1126","NJD":"#ce1126","NYR":"#0038a8","ANA":"#fc4c02","EDM":"#041e42","VGK":"#b4975a","SEA":"#99d9d9","LA":"#111111","LAK":"#111111","SJ":"#006d75","SJS":"#006d75","CGY":"#c8102e","VAN":"#00843d","COL":"#6f263d","DAL":"#006847","MIN":"#154734","UTA":"#010101","NSH":"#ffb81c","WPG":"#041e42","STL":"#002f87","CHI":"#cf0a2c"};
 
 function getColor(abbr) {
   return TEAM_COLORS[abbr] || '#00eaff';
@@ -1052,7 +1052,15 @@ function buildTicker() {
     </span>`;
   }).join('');
   // Double for infinite loop
-  document.getElementById('tickerTrack').innerHTML = html + html;
+  const track = document.getElementById('tickerTrack');
+  track.innerHTML = html + html;
+  // Speed: pixels per second. 120px/s feels like a natural news ticker.
+  requestAnimationFrame(() => {
+    const fullWidth = track.scrollWidth / 2; // half because content is doubled
+    const duration = Math.max(10, fullWidth / 120); // 120px/s, min 10s
+    track.style.animation = 'none';
+    track.style.animation = `ticker ${duration.toFixed(1)}s linear infinite`;
+  });
 }
 
 function getRankPill(s) {
