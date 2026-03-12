@@ -1,46 +1,8 @@
 {
-  "fetched_at": "2026-03-12T15:40:46.812835+00:00",
+  "fetched_at": "2026-03-12T16:43:54.515321+00:00",
   "games": {
-    "date": "2026-03-11",
+    "date": "2026-03-12",
     "games": [
-      {
-        "id": "2025021025",
-        "status": "closed",
-        "start_time": "2026-03-11T23:30:00Z",
-        "home": "OTT",
-        "away": "MTL",
-        "teams": {
-          "OTT": {
-            "name": "Ottawa Senators"
-          },
-          "MTL": {
-            "name": "Montr\u00e9al Canadiens"
-          }
-        },
-        "score": {
-          "OTT": 2,
-          "MTL": 3
-        }
-      },
-      {
-        "id": "2025021026",
-        "status": "closed",
-        "start_time": "2026-03-11T23:30:00Z",
-        "home": "PHI",
-        "away": "WSH",
-        "teams": {
-          "PHI": {
-            "name": "Philadelphia Flyers"
-          },
-          "WSH": {
-            "name": "Washington Capitals"
-          }
-        },
-        "score": {
-          "PHI": 4,
-          "WSH": 1
-        }
-      },
       {
         "id": "2025021027",
         "status": "scheduled",
@@ -989,6 +951,120 @@
         "win_probability": {
           "SEA": 45.0,
           "TB": 55.0
+        }
+      },
+      {
+        "id": "2025021077",
+        "status": "scheduled",
+        "start_time": "2026-03-18T23:00:00Z",
+        "home": "NYR",
+        "away": "NJ",
+        "teams": {
+          "NYR": {
+            "name": "New York Rangers"
+          },
+          "NJ": {
+            "name": "New Jersey Devils"
+          }
+        },
+        "win_probability": {
+          "NYR": 47.6,
+          "NJ": 52.4
+        }
+      },
+      {
+        "id": "2025021078",
+        "status": "scheduled",
+        "start_time": "2026-03-18T23:00:00Z",
+        "home": "CAR",
+        "away": "PIT",
+        "teams": {
+          "CAR": {
+            "name": "Carolina Hurricanes"
+          },
+          "PIT": {
+            "name": "Pittsburgh Penguins"
+          }
+        },
+        "win_probability": {
+          "CAR": 52.7,
+          "PIT": 47.3
+        }
+      },
+      {
+        "id": "2025021079",
+        "status": "scheduled",
+        "start_time": "2026-03-18T23:30:00Z",
+        "home": "WSH",
+        "away": "OTT",
+        "teams": {
+          "WSH": {
+            "name": "Washington Capitals"
+          },
+          "OTT": {
+            "name": "Ottawa Senators"
+          }
+        },
+        "win_probability": {
+          "WSH": 48.6,
+          "OTT": 51.4
+        }
+      },
+      {
+        "id": "2025021080",
+        "status": "scheduled",
+        "start_time": "2026-03-19T01:30:00Z",
+        "home": "COL",
+        "away": "DAL",
+        "teams": {
+          "COL": {
+            "name": "Colorado Avalanche"
+          },
+          "DAL": {
+            "name": "Dallas Stars"
+          }
+        },
+        "win_probability": {
+          "COL": 51.8,
+          "DAL": 48.2
+        }
+      },
+      {
+        "id": "2025021081",
+        "status": "scheduled",
+        "start_time": "2026-03-19T01:30:00Z",
+        "home": "CGY",
+        "away": "STL",
+        "teams": {
+          "CGY": {
+            "name": "Calgary Flames"
+          },
+          "STL": {
+            "name": "St. Louis Blues"
+          }
+        },
+        "win_probability": {
+          "CGY": 48.7,
+          "STL": 51.3
+        }
+      },
+      {
+        "id": "2025021082",
+        "status": "scheduled",
+        "start_time": "2026-03-19T02:00:00Z",
+        "home": "ANA",
+        "away": "PHI",
+        "teams": {
+          "ANA": {
+            "name": "Anaheim Ducks"
+          },
+          "PHI": {
+            "name": "Philadelphia Flyers"
+          }
+        },
+        "win_probability": {
+          "ANA": 51.4,
+          "PHI": 48.6
         }
       }
     ]
