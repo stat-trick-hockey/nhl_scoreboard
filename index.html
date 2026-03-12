@@ -447,6 +447,21 @@
     padding: 0 20px;
   }
 
+
+  .ticker-logo {
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin: 0 4px;
+    filter: drop-shadow(0 0 3px rgba(0,234,255,0.3));
+  }
+
+  .ticker-sep {
+    color: #2a4a6a;
+    margin: 0 6px;
+    font-size: 10px;
+  }
   .ticker-item .live-dot {
     color: var(--neon-red);
     animation: blink 0.5s step-end infinite;
@@ -1024,6 +1039,13 @@ function buildScores() {
   document.getElementById('upcomingGames').innerHTML = upcoming.map(buildGameCard).join('');
 }
 
+
+function getLogoUrl(abbr) {
+  // Map our normalized abbrevs back to NHL CDN abbrevs
+  const CDN_MAP = {"SJ":"SJS","TB":"TBL","NJ":"NJD","LA":"LAK"};
+  const cdnAbbr = CDN_MAP[abbr] || abbr;
+  return `https://assets.nhle.com/logos/nhl/svg/${cdnAbbr}_light.svg`;
+}
 function buildTicker() {
   if (!GAMES) return;
   const items = GAMES.games.filter(g => g.status === 'closed' || g.status === 'inprogress');
@@ -1041,9 +1063,11 @@ function buildTicker() {
     if (!isLive && pType === 'SO') finalSuffix = '/SO';
     else if (!isLive && pType === 'OT') finalSuffix = pNum > 4 ? `/OT${pNum-3}` : '/OT';
 
+    const awayLogo = getLogoUrl(away);
+    const homeLogo = getLogoUrl(home);
     const scoreBlock = g.score
-      ? `${away} <span class="score-val">${g.score[away]}</span> &nbsp; ${home} <span class="score-val">${g.score[home]}</span>`
-      : `${away} <span class="score-val">-</span> &nbsp; ${home} <span class="score-val">-</span>`;
+      ? `<img src="${awayLogo}" class="ticker-logo"><span class="score-val">${g.score[away]}</span><span class="ticker-sep">·</span><img src="${homeLogo}" class="ticker-logo"><span class="score-val">${g.score[home]}</span>`
+      : `<img src="${awayLogo}" class="ticker-logo"><span class="score-val">-</span><span class="ticker-sep">·</span><img src="${homeLogo}" class="ticker-logo"><span class="score-val">-</span>`;
 
     return `<span class="ticker-item">
       ${isLive ? '<span class="live-dot">◉</span>' : `<span class="final-tag">FINAL${finalSuffix}</span> `}
