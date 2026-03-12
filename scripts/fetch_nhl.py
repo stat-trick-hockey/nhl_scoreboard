@@ -2,11 +2,9 @@
 # Fetches NHL schedule/scores, win probability, and standings.
 # No API key required.
 #
-# Endpoints:
-#   GET /v1/schedule/now        - today + upcoming games
-#                                 homeTeamWinProbability is ON the game object here
-#   GET /v1/gamecenter/{id}/landing  - win prob for LIVE games only
-#   GET /v1/standings/now       - current standings
+# Win probability for scheduled games is derived from standings point%
+# (already fetched) -- no extra API calls needed.
+# Win probability for live games comes from gamecenter/landing.
 
 import json
 import time
@@ -17,6 +15,17 @@ from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 BASE = "https://api-web.nhle.com/v1"
+
+# NHL API uses some 3-letter abbrevs; normalize to short forms used in the UI
+ABBREV_MAP = {
+    "SJS": "SJ",
+    "TBL": "TB",
+    "NJD": "NJ",
+    "LAK": "LA",
+}
+
+def normalize_abbrev(a):
+    return ABBREV_MAP.get(a, a)
 
 
 def get_json(path, retries=3, silent_404=False):
@@ -54,6 +63,24 @@ def team_full_name(t):
     return f"{place} {common}".strip() if place else common
 
 
+def win_prob_from_standings(home_abbr, away_abbr, standings_lookup):
+    """
+    Derive win probability from standings point percentage.
+    standings_lookup: dict of abbrev -> win_percentage (0-1 float)
+    Returns {home_abbr: float, away_abbr: float} or None if either team missing.
+    """
+    hp = standings_lookup.get(home_abbr)
+    ap = standings_lookup.get(away_abbr)
+    if hp is None or ap is None:
+        return None
+    total = hp + ap
+    if total == 0:
+        return {home_abbr: 50.0, away_abbr: 50.0}
+    home_prob = round(hp / total * 100, 1)
+    away_prob = round(100.0 - home_prob, 1)
+    return {home_abbr: home_prob, away_abbr: away_prob}
+
+
 def fetch_win_prob_live(game_id, home_abbr, away_abbr):
     """For LIVE games: hits gamecenter landing for homeTeamWinProbability."""
     try:
@@ -71,7 +98,7 @@ def fetch_win_prob_live(game_id, home_abbr, away_abbr):
         return None
 
 
-def fetch_today_games():
+def fetch_today_games(standings_lookup):
     print("Fetching today's schedule...")
     data = get_json("schedule/now")
 
@@ -88,15 +115,15 @@ def fetch_today_games():
     print(f"  {date_str}: {len(raw)} game(s) across {len(game_week)} day(s)")
 
     games_out = []
-    live_prob_needed = []  # (index, game_id, home_abbr, away_abbr)
+    live_prob_needed = []
 
     for g in raw:
         state     = g.get("gameState", "FUT")
         status    = map_state(state)
         home_t    = g.get("homeTeam", {})
         away_t    = g.get("awayTeam", {})
-        home_abbr = home_t.get("abbrev", "???")
-        away_abbr = away_t.get("abbrev", "???")
+        home_abbr = normalize_abbrev(home_t.get("abbrev", "???"))
+        away_abbr = normalize_abbrev(away_t.get("abbrev", "???"))
 
         obj = {
             "id":         str(g.get("id", "")),
@@ -123,22 +150,18 @@ def fetch_today_games():
             obj["period_type"] = pd.get("periodType", "REG")
             obj["clock"]       = g.get("clock", {}).get("timeRemaining", "")
 
-        # Win probability for SCHEDULED games:
-        # homeTeamWinProbability lives directly on the schedule game object (0-100)
+        # Win probability for SCHEDULED games: derive from standings point%
         if status == "scheduled":
-            home_prob = g.get("homeTeamWinProbability")
-            if home_prob is not None:
-                home_prob = round(float(home_prob), 1)
-                away_prob = round(100.0 - home_prob, 1)
-                obj["win_probability"] = {home_abbr: home_prob, away_abbr: away_prob}
+            prob = win_prob_from_standings(home_abbr, away_abbr, standings_lookup)
+            if prob:
+                obj["win_probability"] = prob
 
         games_out.append(obj)
 
-        # For LIVE games, fetch win prob from gamecenter endpoint
+        # For LIVE games, fetch real-time win prob from gamecenter
         if status == "inprogress":
             live_prob_needed.append((len(games_out) - 1, obj["id"], home_abbr, away_abbr))
 
-    # Fetch live win probabilities in parallel
     if live_prob_needed:
         print(f"  Fetching live win probability for {len(live_prob_needed)} game(s)...")
         with ThreadPoolExecutor(max_workers=8) as pool:
@@ -186,8 +209,12 @@ def fetch_standings():
         if wc_seq and wc_seq > 0:
             rank["wildcard"] = wc_seq
 
+        # Normalize abbrev for lookup
+        abbrev = normalize_abbrev(t.get("teamAbbrev", {}).get("default", ""))
+
         out.append({
             "rank":           rank,
+            "abbrev":         abbrev,
             "team":           {"name": team_full_name(t) or t.get("teamName", {}).get("default", "")},
             "wins":           wins,
             "losses":         losses + ot_losses,
@@ -199,9 +226,21 @@ def fetch_standings():
     return out
 
 
+def build_standings_lookup(standings_data):
+    """Build abbrev -> win_percentage dict for win prob calculation."""
+    return {s["abbrev"]: s["win_percentage"] for s in standings_data if s.get("abbrev")}
+
+
 def main():
-    games_data     = fetch_today_games()
     standings_data = fetch_standings()
+    standings_lookup = build_standings_lookup(standings_data)
+    print(f"  Standings lookup: {len(standings_lookup)} teams")
+
+    games_data = fetch_today_games(standings_lookup)
+
+    # Strip abbrev from standings output (was only needed internally)
+    for s in standings_data:
+        s.pop("abbrev", None)
 
     payload = {
         "fetched_at": datetime.now(timezone.utc).isoformat(),
