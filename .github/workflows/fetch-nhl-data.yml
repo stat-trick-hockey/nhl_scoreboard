@@ -2,16 +2,14 @@ name: Fetch NHL Live Data
 
 on:
   schedule:
-    # Every 5 minutes during NHL game hours (noon–2 AM UTC = 8 AM–10 PM ET)
-    - cron: '*/5 12-23 * * *'
-    - cron: '*/5 0-2  * * *'
-  workflow_dispatch: # allow manual trigger from the Actions tab
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   fetch-data:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # needed to push data.json back to the repo
+      contents: write
 
     steps:
       - name: Checkout
@@ -22,10 +20,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      # No pip installs needed — script uses only stdlib (urllib, json, pathlib)
-
       - name: Fetch NHL data
-        # Uses the free, no-key NHL Web API: https://api-web.nhle.com/v1/
         run: python scripts/fetch_nhl.py
 
       - name: Commit & push data.json
