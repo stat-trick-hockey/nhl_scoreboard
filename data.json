@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-03-13T02:49:48.690089+00:00",
+  "fetched_at": "2026-03-13T04:29:40.505619+00:00",
   "games": {
     "date": "2026-03-12",
     "games": [
@@ -157,7 +157,7 @@
       },
       {
         "id": "2025021035",
-        "status": "inprogress",
+        "status": "closed",
         "start_time": "2026-03-13T00:00:00Z",
         "home": "MIN",
         "away": "PHI",
@@ -171,11 +171,8 @@
         },
         "score": {
           "MIN": 2,
-          "PHI": 2
-        },
-        "period": 5,
-        "period_type": "SO",
-        "clock": ""
+          "PHI": 3
+        }
       },
       {
         "id": "2025021036",
@@ -198,7 +195,7 @@
       },
       {
         "id": "2025021037",
-        "status": "inprogress",
+        "status": "closed",
         "start_time": "2026-03-13T01:00:00Z",
         "home": "UTA",
         "away": "CHI",
@@ -211,12 +208,9 @@
           }
         },
         "score": {
-          "UTA": 1,
-          "CHI": 0
-        },
-        "period": 2,
-        "period_type": "REG",
-        "clock": ""
+          "UTA": 2,
+          "CHI": 3
+        }
       },
       {
         "id": "2025021038",
@@ -233,11 +227,11 @@
           }
         },
         "score": {
-          "VAN": 1,
-          "NSH": 1
+          "VAN": 3,
+          "NSH": 3
         },
-        "period": 1,
-        "period_type": "REG",
+        "period": 4,
+        "period_type": "OT",
         "clock": ""
       },
       {
@@ -255,10 +249,10 @@
           }
         },
         "score": {
-          "VGK": 1,
-          "PIT": 0
+          "VGK": 5,
+          "PIT": 2
         },
-        "period": 1,
+        "period": 3,
         "period_type": "REG",
         "clock": ""
       },
@@ -277,10 +271,10 @@
           }
         },
         "score": {
-          "SEA": 0,
-          "COL": 3
+          "SEA": 1,
+          "COL": 5
         },
-        "period": 1,
+        "period": 3,
         "period_type": "REG",
         "clock": ""
       },
@@ -394,8 +388,8 @@
           }
         },
         "win_probability": {
-          "MIN": 58.4,
-          "NYR": 41.6
+          "MIN": 58.3,
+          "NYR": 41.7
         }
       },
       {
@@ -508,8 +502,8 @@
           }
         },
         "win_probability": {
-          "PHI": 48.4,
-          "CBJ": 51.6
+          "PHI": 48.7,
+          "CBJ": 51.3
         }
       },
       {
@@ -546,8 +540,8 @@
           }
         },
         "win_probability": {
-          "UTA": 47.7,
-          "PIT": 52.3
+          "UTA": 47.6,
+          "PIT": 52.4
         }
       },
       {
@@ -584,8 +578,8 @@
           }
         },
         "win_probability": {
-          "VGK": 54.6,
-          "CHI": 45.4
+          "VGK": 54.2,
+          "CHI": 45.8
         }
       },
       {
@@ -774,8 +768,8 @@
           }
         },
         "win_probability": {
-          "DAL": 55.7,
-          "UTA": 44.3
+          "DAL": 55.8,
+          "UTA": 44.2
         }
       },
       {
@@ -869,8 +863,8 @@
           }
         },
         "win_probability": {
-          "CHI": 40.8,
-          "MIN": 59.2
+          "CHI": 41.3,
+          "MIN": 58.7
         }
       },
       {
@@ -1078,8 +1072,8 @@
           }
         },
         "win_probability": {
-          "ANA": 51.0,
-          "PHI": 49.0
+          "ANA": 50.7,
+          "PHI": 49.3
         }
       }
     ]
@@ -1136,8 +1130,8 @@
         "name": "Minnesota"
       },
       "wins": 38,
-      "losses": 27,
-      "win_percentage": 0.669,
+      "losses": 28,
+      "win_percentage": 0.667,
       "conference": "WESTERN CONFERENCE",
       "division": "Central"
     },
@@ -1269,6 +1263,20 @@
     },
     {
       "rank": {
+        "division": 4,
+        "conference": 5
+      },
+      "team": {
+        "name": "Utah"
+      },
+      "wins": 34,
+      "losses": 32,
+      "win_percentage": 0.561,
+      "conference": "WESTERN CONFERENCE",
+      "division": "Central"
+    },
+    {
+      "rank": {
         "division": 6,
         "conference": 10
       },
@@ -1283,22 +1291,22 @@
     },
     {
       "rank": {
-        "division": 4,
-        "conference": 5
+        "division": 5,
+        "conference": 11
       },
       "team": {
-        "name": "Utah"
+        "name": "Philadelphia"
       },
-      "wins": 34,
-      "losses": 31,
+      "wins": 31,
+      "losses": 34,
       "win_percentage": 0.562,
-      "conference": "WESTERN CONFERENCE",
-      "division": "Central"
+      "conference": "EASTERN CONFERENCE",
+      "division": "Metropolitan"
     },
     {
       "rank": {
-        "division": 5,
-        "conference": 11
+        "division": 6,
+        "conference": 12
       },
       "team": {
         "name": "Washington"
@@ -1336,20 +1344,6 @@
       "win_percentage": 0.545,
       "conference": "WESTERN CONFERENCE",
       "division": "Pacific"
-    },
-    {
-      "rank": {
-        "division": 6,
-        "conference": 12
-      },
-      "team": {
-        "name": "Philadelphia"
-      },
-      "wins": 30,
-      "losses": 34,
-      "win_percentage": 0.555,
-      "conference": "EASTERN CONFERENCE",
-      "division": "Metropolitan"
     },
     {
       "rank": {
@@ -1499,9 +1493,9 @@
       "team": {
         "name": "Chicago"
       },
-      "wins": 24,
+      "wins": 25,
       "losses": 40,
-      "win_percentage": 0.461,
+      "win_percentage": 0.469,
       "conference": "WESTERN CONFERENCE",
       "division": "Central"
     },
